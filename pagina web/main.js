@@ -1,4 +1,4 @@
-const apiUrl = "http://127.0.0.1:8000/docs"
+const api = "http://127.0.0.1:8000/docs"
 const form = document.querySelector(".form form");
 const pista = document.getElementById("pista");
 const btnAnt = document.getElementById("ant");
