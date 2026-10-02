@@ -1,0 +1,87 @@
+body{
+  background: linear-gradient(to bottom, #000000, #363636);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.diplay{
+  width: 300px;
+  justify-content: center;
+  background-color: #808080;
+  color: greenyellow;
+  gap: 10px;
+  padding: 30px;
+}
+
+h1{
+  width: 50%;
+  color: #41FF00;
+  justify-content: center;
+}
+.form{
+  justify-content: center;
+  background-color: rgb(54, 53, 53);
+  color: #C6A664;
+  font-size: medium;
+}
+
+.carrusel {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  overflow: hidden;
+  background: white;
+  border-radius: 10px;
+}
+
+.pista {
+  display: flex;
+  flex-direction: row-reverse;   
+  transition: transform 0.5s;
+}
+
+.slide {
+  min-width: 100%;
+  padding-bottom: 15px;
+  text-align: center;
+}
+
+.slide img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+}
+
+.slide h2 {
+  margin: 10px 0;
+}
+
+.slide p {
+  margin: 4px 0;
+}
+
+.btn {
+  position: absolute;
+  top: 110px;
+  background: black;
+  color: white;
+  border: none;
+  font-size: 20px;
+  padding: 10px 14px;
+  cursor: pointer;
+  opacity: 0.6;
+}
+
+.izq { left: 10px; }
+.der { right: 10px; }
+
+.lista{
+  width: 450px;
+  background-color: #363636;
+  
+
+}
