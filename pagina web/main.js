@@ -1,8 +1,8 @@
 const apigeneral = "http://127.0.0.1:8000";
-const eae = "${apigeneral}/agregar_ejercito"; /*api del endpoint de agregar_ejercito*/
-const ede = (id) =>"${apigeneral}/delete_ejercito/${id}"; /* endpoint de eliminar */
-const eve = "${apigeneral}/ver_ejercitos"; /* endpoint para la lista*/
-const eupd =(id) =>"${apigeneral}/actualizar_ejercito/${id}"; /* endpoint de update*/
+const eae = `${apigeneral}/agregar_ejercito`; /*api del endpoint de agregar_ejercito*/
+const ede = (id) =>`${apigeneral}/delete_ejercito/${id}`; /* endpoint de eliminar */
+const eve = `${apigeneral}/ver_ejercitos`; /* endpoint para la lista*/
+const eupd =(id) =>`${apigeneral}/actualizar_ejercito/${id}`; /* endpoint de update*/
 /* porque pongo los endpoints separados de la api, es por que soy paranoico, me quiero revisar que el endpoint sea el correcto 
 asi ahorro errores y lo hago mas eficiente. y es por que no me gusta los metodos con http los veo poco descriptivos y bastante 
 especulativos ejemplo es como un gps y un mapa, el metodo que aplico es el mapa te muestra todo el trayecto y si me equivoco es mi culpa
@@ -14,8 +14,8 @@ const lista = document.querySelector('lista')
 const btn = document.querySelector('.enviar')
 const carrito1 = document.querySelector('.carrito')
 
-carrito = []
-ejercitos = []
+const carrito = []
+const ejercitos = []
 
 /*aca va el fetch para poder ver los elementos de la api*/
 async function ver_ejercitos(){
@@ -45,7 +45,6 @@ async function ver_ejercitos(){
     sicarius.addEventListener("click", async () => {
       try{
         const respuesta = await fetch(ede(abc.id), {method : "DELETE"});
-        if (!respuesta.ok) throw new Error(`Error ${respuesta.status}`);
         guilliman.remove();
         alert("se elimino exitosamente");
       }
@@ -106,14 +105,11 @@ async function ver_ejercitos(){
       rex.append("enviar");
 
       rex.addEventListener("click", async (e) => {
-        e.preventDefault(); // evita que se recargue la página
-        if (!updformulario.reportValidity()) return;
-
         // datos encapsulados, con las claves del modelo de la API
         const datos = {
-          nombre: anakin.value.trim(),
-          imagen: boba.value.trim(),
-          espec: obiwan.value.trim(),
+          nombre: anakin.value(),
+          imagen: boba.value(),
+          espec: obiwan.value(),
           cantidad: Number(luke.value),
           precio: Number(cody.value),
         };
@@ -124,7 +120,6 @@ async function ver_ejercitos(){
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(datos),
           });
-          if (!respuesta.ok) throw new Error(`Error ${respuesta.status}`);
 
           // actualizamos la tarjeta en pantalla sin volver a pedir la lista
           horus.src = datos.imagen;
@@ -171,11 +166,58 @@ async function ver_ejercitos(){
 }
   console.log(ver_ejercitos)
   async function añadir_ejercitos() {
-    const datos = getElementById()
+    /* ya me da peresa ponerle nombres de personajes de franquicias espaciales,
+    a este paso voy a soñar con una js en amarillo persiguiendome y haciendome miserable
+    */
+   //nota de developer 22:44 6 del 10
+   //que dia de mierda a este paso voy a terminar a como el sujeto al que se refiere la cancion atrevete 
+   // la cancion se refiere a una persona rigida y cuadrada a la cual le dicen que se suelte un poco asi la pasa bien
+   // lastima que soy un antisocial con pocos frenos en la violencia
+   //volviendo al codigo hoy descanse la mayor parte del dia pero estoy intentando revisar si el agregar funciona luego lo voy a probar y depurar espero no perder el sueño 
+
+    const datos = {
+      nombre: form.querySelector(".nombre").value,
+      cantidad: Number(form.querySelector(".numero").value),
+      espec: form.querySelector(".espec").value,
+      imagen: form.querySelector(".imagen").value,
+      precio: Number(form.querySelector(".precio").value),
+    };
+    try{
+      const gnoquis = await fetch(eae ,{
+        method : "POST",
+        headers: { "Content-Type": "application/json" },
+        body : JSON.stringify(datos)
+      });
+      form.reset()
+    }catch(error){
+      console.error("no se pudo enviar",error)
+    }
   }
-
-
-
-  async function cargar() {
-    
-  }
+async function verne() { // carrito
+  carrito1.replaceChildren();
+  carrito.forEach(item => {
+    const li = document.createElement("li");
+    li.append(item.nombre, " - ", item.cantidad, " efectivos - ", item.precio);
+    carrito1.append(li);
+  });
+}
+//hace falta explicar que hace. espero que si se lo doy al coyote no explote. XD
+// escribir estos comentarios me ayuda a sobrellevar este leguaje de basura aguante php
+//al final en el github van a salir 40% ccomentarios, 30%js y 20%html y  10%css jajajajajajajajasjajajjjajajjajajajajajjajaj
+  function renderuniversalmarcaACME(){
+  ver_ejercitos(); // lista
+  buscar_ejercitos(); // buscador
+  enviar_ejercitos(); // formulario de agregar
+  verne(); // carrito
+}
+function buscar_ejercitos(){
+  const buscador = document.querySelector('.buscador')
+  buscador.addEventListener("input", () => {
+    const texto = buscador.value.toLowerCase().trim();
+    Array.from(lista.children).forEach(item => {
+      item.hidden = !item.dataset.nombre.includes(texto);
+    });
+  });
+}
+renderuniversalmarcaACME();
+}
