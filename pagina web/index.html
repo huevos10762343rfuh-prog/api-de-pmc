@@ -12,45 +12,37 @@
     <h2>esta pagina sirve para contratar servicios de fuerzas militares privadas
         o de paises que decidan "prestarlos" bajo contrato.
     </h2>
+<!--carrito-->
+<button class="carritomexa" type="button">🛒</button>
+<dialog class="ventanacarrito">
+    <h2>tu carrito</h2>
+    <ul class="carrito">
+
+    </ul>
+    <button class="cerrarcarrito" type="button">cerrar</button>
+</dialog>
+<!--añadir objeto -->
     <section>
         <div class="form">
-        <form action="" method="post">
+        <form class="form">
             <label>agregar pmc</label>
             <p>completa los campos para poder añadir una pmc al catalogo</p>
-            <input type="text" placeholder="nombre">
-            <input type="number" placeholder="cantidad">
-            <input type="text" placeholder="espec">
-            <input type="text" placeholder="imagen por url">
-            <input type="number" placeholder="precio">
-            <button type="submit">enviar</button>
+            <input type="text" class="nombre" placeholder="nombre">
+            <input type="number" class="numero" placeholder="cantidad">
+            <input type="text" class="espec" placeholder="espec">
+            <input type="text" class="imagen" placeholder="imagen por url">
+            <input type="number" class="precio" placeholder="precio">
+            <button class="enviar" type="submit">enviar</button>
         </form>
         </div>
     </section>
-<!--display del carrusel-->
-    <section>
-        <h1>algunos de nuestros contratos
-            mas seleccionados
-        </h1>
-    </section>
-<div class="carrusel" id="carrusel">
-  <div class="pista" id="pista"></div>
-  <button class="btn ant" id="ant" aria-label="Anterior">&#10094;</button>
-  <button class="btn sig" id="sig" aria-label="Siguiente">&#10095;</button>
-</div>
-
-
-
-
-
-
-
 <!--lista con imagenes de todos los productos-->
 <section>
 <h2>lista de pmc completas</h2>
-<div class="lista">
-<ul>pmc</ul>
-
-
+<div>
+<ul class="lista"></ul>
+</div>
+</section>
 <script src="main.js"></script>
 </body>
 </html>
